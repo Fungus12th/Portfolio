@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GraphOS | Saifan Mohideen</title>
+    <meta name="description" content="GraphOS — A next-generation Project-Oriented Operating System built around a graph-native execution model." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar scrolled">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <span class="logo-bracket">{</span> SM <span class="logo-bracket">}</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="/#skills" class="nav-link">Skills</a></li>
+          <li><a href="/#projects" class="nav-link active">Projects</a></li>
+          <li><a href="/#education" class="nav-link">Education</a></li>
+          <li><a href="/#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="/#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="/#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="/#education" class="mobile-nav-link">Education</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Project Detail -->
+    <div class="project-detail">
+      <div class="container">
+
+        <!-- Back Link -->
+        <a href="/projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Projects
+        </a>
+
+        <!-- Header -->
+        <div class="project-detail-header">
+          <div class="project-detail-tech-row">
+            <span>OS Architecture</span>
+            <span>Graph Native</span>
+            <span>FUSE</span>
+            <span>In Progress</span>
+          </div>
+          <h1 class="project-detail-title">GraphOS</h1>
+          <p class="project-detail-subtitle">A next-generation Project-Oriented Operating System built around a graph-native execution model (Draft v0.1).</p>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>Abstract</h2>
+          <p>GraphOS is a next-generation Project-Oriented Operating System (ProjectOS) built around a graph-native execution model. Unlike traditional operating systems where the filesystem is the primary abstraction, GraphOS introduces the Project as the first-class computational unit.</p>
+          <p>Every component within the system—projects, code modules, AI agents, datasets, containers, services, documents, workflows, and devices—is represented as interconnected Entities inside a persistent graph.</p>
+          <p>The filesystem continues to exist internally for compatibility, but users interact primarily with projects and their relationships rather than directories and files.</p>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>Core Principles</h2>
+          <ul class="project-detail-list">
+            <li>Project First</li>
+            <li>Graph Native</li>
+            <li>Entity Based</li>
+            <li>AI Ready</li>
+            <li>Event Driven</li>
+            <li>Modular</li>
+            <li>Plugin Oriented</li>
+            <li>Local First</li>
+            <li>Cross Platform Compatible</li>
+            <li>Developer Centric</li>
+          </ul>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>High-Level Architecture</h2>
+          <p>At its core, GraphOS sits above the Linux kernel (in Version 1) but replaces traditional user-space interactions with a Unified Command Bus and Graph Runtime. Everything above the kernel communicates through the Graph Runtime. Entities flow from the Entity Engine through the Graph Store and Filesystem Adapter (via FUSE) to maintain compatibility with existing tools while fundamentally shifting the execution paradigm.</p>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>The Graph Runtime & Entity Engine</h2>
+          <p>This is the heart of GraphOS. The runtime manages Entity Graphs, Relationship Graphs, Dependency Graphs, Resource Graphs, Execution Graphs, and Permission Graphs. Nothing exists outside the graph.</p>
+          <p>Every object (Project, Code Module, Document, Database, AI Agent, Workflow) becomes an Entity with an ID, Type, Metadata, Relationships, Capabilities, Permissions, Version, and State.</p>
+          <p>Example relationships: <code>Backend -> depends_on -> Database</code> or <code>Dataset -> used_by -> AI Model</code>.</p>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>Filesystem Adapter (FUSE)</h2>
+          <p>Users never interact directly with traditional storage. The filesystem is dynamically generated for compatibility with VS Code, Git, compilers, and existing apps.</p>
+          <p>When a user edits a virtual file, the Entity Graph updates automatically. Storage is an implementation detail (using SQLite, RocksDB, etc.), eventually moving to a Native Graph Store.</p>
+        </div>
+
+        <div class="project-detail-section">
+          <h2>Version Roadmap</h2>
+          <ul class="project-detail-list">
+            <li><strong>v0.1:</strong> Linux-based, Graph Runtime, Entity Engine, Project Runtime, CLI, Basic GUI.</li>
+            <li><strong>v0.5:</strong> Workflow Scheduler, Capability Engine, Plugin SDK, Visual Graph.</li>
+            <li><strong>v1.0:</strong> Bootable ISO, Project Workspace, AI Runtime, Graph Explorer.</li>
+            <li><strong>v2.0:</strong> Native Graph Filesystem, Distributed Projects, AI-assisted Scheduling.</li>
+            <li><strong>v3.0:</strong> Research Kernel, Native Graph Memory Manager, Graph-based IPC.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content" style="text-align: center; flex-direction: column; gap: 8px;">
+          <p class="footer-text" style="font-style: italic; color: var(--text-primary); margin-bottom: 4px;">
+            "As long as there is life, there is hope"
+          </p>
+          <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+            <p class="footer-text">
+              <span class="footer-code">&lt;/&gt;</span> Built by Saifan Mohideen
+            </p>
+            <p class="footer-year">© 2026</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -15,8 +15,7 @@ export default defineConfig({
         projects: resolve(__dirname, 'projects.html'),
         discprojektblue: resolve(__dirname, 'project-discprojektblue.html'),
         graphos: resolve(__dirname, 'project-graphos.html'),
-        cryptoaudit: resolve(__dirname, 'project-cryptoaudit.html'),
-        bosses: resolve(__dirname, 'project-bosses.html')
+        cryptoaudit: resolve(__dirname, 'project-cryptoaudit.html')
       }
     }
   }

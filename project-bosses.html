@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Bosses - Saifan Mohideen</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container navbar-container">
+        <a href="/" class="logo">
+          <span class="logo-icon">&gt;_</span>
+          Saifan Mohideen
+        </a>
+        <ul class="nav-links">
+          <li><a href="/#skills" class="nav-link">Skills</a></li>
+          <li><a href="/#projects" class="nav-link">Projects</a></li>
+          <li><a href="/#education" class="nav-link">Education</a></li>
+          <li><a href="/#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="/#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="/#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="/#education" class="nav-link">Education</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Project Detail -->
+    <div class="project-detail" style="padding-top: 100px;">
+      <div class="container">
+
+        <!-- Back Link -->
+        <a href="/projects.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Projects
+        </a>
+
+        <!-- Header -->
+        <div class="project-detail-header">
+          <div class="project-detail-tech-row">
+            <span>Godot 4</span>
+            <span>GDScript</span>
+            <span>Game Dev</span>
+          </div>
+          <h1 class="project-detail-title">Space Bosses</h1>
+          <p class="project-detail-subtitle">A fast-paced 2D sci-fi boss rush prototype featuring homing projectiles, laser attacks, and platforming combat.</p>
+        </div>
+
+        <!-- The Game Frame -->
+        <div class="project-detail-section" style="text-align: center; margin: 40px 0;">
+          <h2 style="margin-bottom: 20px;">Play the Game</h2>
+          <div style="background: #111; padding: 20px; border: 4px solid var(--primary-color); border-radius: 8px; box-shadow: 8px 8px 0 rgba(46, 125, 50, 0.2); display: inline-block; max-width: 100%;">
+            <!-- Notice how it points to the exported HTML5 path! -->
+            <iframe src="/boss-game/index.html" width="1152" height="648" style="border: none; max-width: 100%;" allow="autoplay; fullscreen" title="Space Bosses Game"></iframe>
+          </div>
+          <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Controls: Arrow Keys / WASD to move, Space to jump.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content" style="text-align: center; flex-direction: column; gap: 8px;">
+          <p class="footer-text" style="font-style: italic; color: var(--text-primary); margin-bottom: 4px;">
+            "As long as there is life, there is hope"
+          </p>
+          <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+            <p class="footer-text">
+              <span class="footer-code">&lt;/&gt;</span> Built by Saifan Mohideen
+            </p>
+            <p class="footer-year">© 2026</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

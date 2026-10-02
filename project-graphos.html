@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GraphOS | Saifan Mohideen</title>
-    <meta name="description" content="GraphOS — A next-generation Project-Oriented Operating System built around a graph-native execution model." />
+    <meta name="description" content="GraphOS — A graph-native, project-oriented operating system built on FUSE3 and C, replacing traditional filesystem abstractions with a unified directed graph." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -54,65 +54,77 @@
         <!-- Header -->
         <div class="project-detail-header">
           <div class="project-detail-tech-row">
-            <span>OS Architecture</span>
-            <span>Graph Native</span>
-            <span>FUSE</span>
+            <span>C (C99)</span>
+            <span>FUSE3</span>
+            <span>Linux Kernel</span>
+            <span>Graph Theory</span>
             <span>In Progress</span>
           </div>
           <h1 class="project-detail-title">GraphOS</h1>
-          <p class="project-detail-subtitle">A next-generation Project-Oriented Operating System built around a graph-native execution model (Draft v0.1).</p>
+          <p class="project-detail-subtitle">A graph-native, project-oriented operating system that replaces traditional filesystem abstractions with a unified directed graph — where every entity (file, process, device) is a node and every relationship is an edge.</p>
         </div>
 
+        <!-- The Problem -->
         <div class="project-detail-section">
-          <h2>Abstract</h2>
-          <p>GraphOS is a next-generation Project-Oriented Operating System (ProjectOS) built around a graph-native execution model. Unlike traditional operating systems where the filesystem is the primary abstraction, GraphOS introduces the Project as the first-class computational unit.</p>
-          <p>Every component within the system—projects, code modules, AI agents, datasets, containers, services, documents, workflows, and devices—is represented as interconnected Entities inside a persistent graph.</p>
-          <p>The filesystem continues to exist internally for compatibility, but users interact primarily with projects and their relationships rather than directories and files.</p>
+          <h2>The Problem</h2>
+          <p>Traditional operating systems handle files, processes, devices, sockets, and services through disconnected abstractions — hierarchical inode trees for files, process tables, socket descriptors, and separate service managers. These fragments don't talk to each other natively.</p>
+          <p>GraphOS asks: <strong>what if the OS itself was a graph?</strong> Every resource becomes a node, every relationship becomes a typed edge, and graph traversal replaces traditional lookup mechanisms entirely.</p>
         </div>
 
+        <!-- Architecture -->
         <div class="project-detail-section">
-          <h2>Core Principles</h2>
+          <h2>Architecture (6-Layer Design)</h2>
           <ul class="project-detail-list">
-            <li>Project First</li>
-            <li>Graph Native</li>
-            <li>Entity Based</li>
-            <li>AI Ready</li>
-            <li>Event Driven</li>
-            <li>Modular</li>
-            <li>Plugin Oriented</li>
-            <li>Local First</li>
-            <li>Cross Platform Compatible</li>
-            <li>Developer Centric</li>
+            <li><strong>L0 — Linux Kernel (6.6 LTS):</strong> Base kernel providing hardware abstraction, scheduling, memory management, and device drivers.</li>
+            <li><strong>L1 — GraphFS Core:</strong> The authoritative graph-native storage engine maintaining nodes, edges, content buffers, and traversal indexes.</li>
+            <li><strong>L2 — Compatibility Shim:</strong> Bridges POSIX filesystem syscalls to graph mutations and queries via FUSE3, so standard tools (VS Code, Git, compilers) just work.</li>
+            <li><strong>L3 — POS Runtime:</strong> Project lifecycle management with isolated namespaces, dependency resolution, and copy-on-write snapshots.</li>
+            <li><strong>L4 — Intelligence Layer:</strong> Local inference for semantic code/file retrieval and predictive prefetch (planned).</li>
+            <li><strong>L5 — Shell & UX:</strong> Visual graph navigator, graph shell (<code>gsh</code>), and system dashboard (planned).</li>
           </ul>
         </div>
 
+        <!-- Graph Data Model -->
         <div class="project-detail-section">
-          <h2>High-Level Architecture</h2>
-          <p>At its core, GraphOS sits above the Linux kernel (in Version 1) but replaces traditional user-space interactions with a Unified Command Bus and Graph Runtime. Everything above the kernel communicates through the Graph Runtime. Entities flow from the Entity Engine through the Graph Store and Filesystem Adapter (via FUSE) to maintain compatibility with existing tools while fundamentally shifting the execution paradigm.</p>
-        </div>
-
-        <div class="project-detail-section">
-          <h2>The Graph Runtime & Entity Engine</h2>
-          <p>This is the heart of GraphOS. The runtime manages Entity Graphs, Relationship Graphs, Dependency Graphs, Resource Graphs, Execution Graphs, and Permission Graphs. Nothing exists outside the graph.</p>
-          <p>Every object (Project, Code Module, Document, Database, AI Agent, Workflow) becomes an Entity with an ID, Type, Metadata, Relationships, Capabilities, Permissions, Version, and State.</p>
-          <p>Example relationships: <code>Backend -> depends_on -> Database</code> or <code>Dataset -> used_by -> AI Model</code>.</p>
-        </div>
-
-        <div class="project-detail-section">
-          <h2>Filesystem Adapter (FUSE)</h2>
-          <p>Users never interact directly with traditional storage. The filesystem is dynamically generated for compatibility with VS Code, Git, compilers, and existing apps.</p>
-          <p>When a user edits a virtual file, the Entity Graph updates automatically. Storage is an implementation detail (using SQLite, RocksDB, etc.), eventually moving to a Native Graph Store.</p>
-        </div>
-
-        <div class="project-detail-section">
-          <h2>Version Roadmap</h2>
+          <h2>The Graph Model</h2>
+          <p>Everything in GraphOS is either a <strong>Node</strong> or an <strong>Edge</strong>:</p>
           <ul class="project-detail-list">
-            <li><strong>v0.1:</strong> Linux-based, Graph Runtime, Entity Engine, Project Runtime, CLI, Basic GUI.</li>
-            <li><strong>v0.5:</strong> Workflow Scheduler, Capability Engine, Plugin SDK, Visual Graph.</li>
-            <li><strong>v1.0:</strong> Bootable ISO, Project Workspace, AI Runtime, Graph Explorer.</li>
-            <li><strong>v2.0:</strong> Native Graph Filesystem, Distributed Projects, AI-assisted Scheduling.</li>
-            <li><strong>v3.0:</strong> Research Kernel, Native Graph Memory Manager, Graph-based IPC.</li>
+            <li><strong>Nodes:</strong> SYSTEM (root), DIRECTORY, FILE, PROCESS — with future types for DEVICE, SOCKET, SERVICE, and MEMORY.</li>
+            <li><strong>Edges:</strong> CONTAINS (parent → child), USES (process → resource dependency), PARENT_OF (process hierarchy).</li>
           </ul>
+          <p>Paths like <code>/projects/graphos/src/graph.c</code> are resolved by tokenizing on <code>/</code> and traversing CONTAINS edges outward from the root node — no inode tables involved.</p>
+        </div>
+
+        <!-- What Makes It Different -->
+        <div class="project-detail-section">
+          <h2>What Makes It Different</h2>
+          <ul class="project-detail-list">
+            <li><strong>Graph-Authoritative Path Resolution:</strong> Directory lookup is a graph traversal, not an inode table scan.</li>
+            <li><strong>Multi-Parent Hardlinking:</strong> A file node can have multiple CONTAINS edges from different directories — zero-copy, shared data buffer, no duplication.</li>
+            <li><strong>Safe Edge Severing:</strong> Unlinking removes one edge. If other parents exist, the node survives. <code>SEVER_ALL</code> triggers cascading annihilation of all references.</li>
+            <li><strong>Live Graph Introspection:</strong> Reading <code>/.graph</code> dumps the entire live in-memory graph topology. <code>/.graph_cmd</code> accepts graph-level directives as an IPC channel.</li>
+          </ul>
+        </div>
+
+        <!-- Current State -->
+        <div class="project-detail-section">
+          <h2>Development Roadmap</h2>
+          <ul class="project-detail-list">
+            <li><strong>Phase 1 — Graph Core API:</strong> ✅ Complete. Standalone C library (<code>libgraph.a</code>) with node/edge CRUD, traversal, cascading deletion, and unit tests.</li>
+            <li><strong>Phase 2 — GraphFS (FUSE3):</strong> ✅ Complete. ~513-line FUSE filesystem intercepting POSIX calls and mapping them to graph operations.</li>
+            <li><strong>Phase 3 — Persistence:</strong> 🔄 Next. Serializing graph state to disk (<code>nodes.dat</code>, <code>edges.dat</code>).</li>
+            <li><strong>Phase 4 — Extended CLI:</strong> 🔄 Partial. <code>graphctl</code> works with spawn, read, draw-edge, sever, and inspect commands.</li>
+            <li><strong>Phase 5-6 — Process & Resource Graphs:</strong> 📋 Designed. Polling <code>/proc</code> to map running processes and file descriptors into the graph.</li>
+            <li><strong>Phase 7-10 — Kernel Integration & Bootable OS:</strong> 📋 Long-term. Linux 6.6 fork-and-patch toward a bootable QEMU image.</li>
+          </ul>
+        </div>
+
+        <!-- GitHub CTA -->
+        <div class="project-detail-cta">
+          <a href="https://github.com/Smit-Kamatnurkar/GraphOS" target="_blank" rel="noopener" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            View Source Code on GitHub
+          </a>
         </div>
 
       </div>
